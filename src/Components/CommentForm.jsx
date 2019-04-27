@@ -21,15 +21,15 @@ class CommentForm extends React.Component {
 
 	componentWillMount() {
 
-		var commentList = 
-		{
-			comments : 
-			[]
-		}
+		// var commentList = 
+		// {
+		// 	comments : 
+		// 	[]
+		// }
 
-		if(!localStorage.getItem('comments')){
-			localStorage.setItem('comments',JSON.stringify(commentList));
-		}
+		// if(!localStorage.getItem('comments')){
+		// 	localStorage.setItem('comments',JSON.stringify(commentList));
+		// }
 	}
 
 

@@ -20,6 +20,15 @@ class CommentList extends React.Component {
 	/**This function runs before render method,
 	 * Fetching data from source for the first time*/
 	componentWillMount() {
+		var commentList = 
+		{
+			comments : 
+			[]
+		}
+
+		if(!localStorage.getItem('comments')){
+			localStorage.setItem('comments',JSON.stringify(commentList));
+		}
 	}
 
 	/**This function runs after render method
