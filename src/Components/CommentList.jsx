@@ -38,7 +38,7 @@ class CommentList extends React.Component {
 	}
 
 	_getCommentList() {
-		return this.state.comments.map((comment) => {
+		return JSON.parse(localStorage.getItem('comments')).comments.map((comment) => {
 			return (<Comment key={comment.id}
 											 author={comment.author}
 											 body={comment.body}
@@ -62,7 +62,9 @@ class CommentList extends React.Component {
 
 	_handleClick() {
 		this.setState({
-			showComments: !this.state.showComments
+			showComments: !this.state.showComments,
+			// comments: localStorage.getItem('comments')
+
 		});
 	}
 
@@ -121,6 +123,7 @@ class CommentList extends React.Component {
 		// this.setState({[author})
 		// console.log(value)
 		// this.setState({comments})
+		// console.log(localStorage.getItem('comment'))
 		console.log('fetched data!');
 	}
 	_deleteComment(comment) {
@@ -153,7 +156,7 @@ class CommentList extends React.Component {
 		};
 
 		this.setState({comments: this.state.comments.concat([comment])});
-		localStorage.setItem('comment',JSON.stringify(this.state.comments));
+		// localStorage.setItem('comment',JSON.stringify(this.state.comments));
 		console.log('added!')
 	}
 

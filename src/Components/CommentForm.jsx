@@ -19,6 +19,40 @@ class CommentForm extends React.Component {
 		}
 	}
 
+	componentWillMount() {
+
+		var commentList = 
+		{
+			comments : 
+			[]
+		}
+
+		if(!localStorage.getItem('comments')){
+			localStorage.setItem('comments',JSON.stringify(commentList));
+		}
+	}
+
+
+	addToLocal = () => {
+
+
+		var restoredComments = JSON.parse(localStorage.getItem('comments'));
+		console.log(restoredComments.comments.length);
+		// console.log(Object.keys(restoredComments).comments)
+
+		const comment = {
+			id: restoredComments.comments.length+1,
+			author: this.state.nameValue,
+			body: this.state.bodyValue
+		};
+  		restoredComments==null ? localStorage.setItem('comments',JSON.stringify(comment)) : restoredComments.comments.push(comment);
+  		if (restoredComments) {
+  			localStorage.setItem('comments', JSON.stringify(restoredComments));
+
+  		} 
+		// localStorage.setItem('comments',JSON.stringify(this.state.comments));		
+	}
+
 	render() {
 		return (
 			<Paper style={{padding:'15px', backgroundColor:'#ccc'}}>
@@ -44,7 +78,7 @@ class CommentForm extends React.Component {
 					<Divider />
 					<br />
 					<br />
-					<RaisedButton type="submit" secondary={true} label="Post Comment"/>
+					<RaisedButton onClick={this.addToLocal} type="submit" secondary={true} label="Post Comment"/>
 					<br />
 					<br />
 					<div>{this.state.charCount} characters</div>
